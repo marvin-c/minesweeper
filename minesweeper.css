@@ -47,8 +47,20 @@ div.mine, div.mine:hover {
   background: no-repeat center/60% url("images/bomb.svg") crimson;
 }
 
+button {
+  margin-right: 30px;
+  height: 40px;
+  width: 150px;
+  border-radius: 10%;
+}
+
 div.hidden {
   background: #eee;
+}
+
+#showRestart {
+  align-items: center;
+  display: none;
 }
 
 div.hidden:hover {
@@ -58,3 +70,4 @@ div.hidden:hover {
 div.marked, div.marked:hover {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue;
 }
+

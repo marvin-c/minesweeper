@@ -2,14 +2,63 @@
 <html>
   <head>
     <title>Minesweeper</title>
-    <link rel="stylesheet" href="minesweeper.css">
-    <script src="lib/tests.js"></script>
-    <script src="lib/lib.js"></script>
-    <script src="minesweeper.js"></script>
+    <style>
+      div {
+        text-align: center;
+      }
+      img {
+        cursor: pointer;
+        opacity: .3;
+      }
+      img:hover {
+        opacity: 10;
+      }
+      img:active{
+        transform: translateY(4px);
+      }
+    </style>
+    <script>
+      function getDifficulty(num) {
+        sessionStorage.setItem("passDifficulty", num);
+      }
+    </script>
+    <script src="audio.js"></script>
+    <script>
+      function playaudio(audio) {
+        var eZi = document.getElementById(audio);
+        eZi.play();
+      }  
+      function StopSound(soundobj) {
+        var thissound=document.getElementById(soundobj);
+        thissound.pause();
+        thissound.currentTime = 0;
+      }
+    </script>
   </head>
   <body>
-    <div id="message"></div>
-    <div id="notes"></div>
-    <div class="board"></div>
+
+    <form action="game.html" method="GET">
+    <h1><center>Choose difficulty!</center></h1>
+    <div>
+
+      <a href="game.html" onclick="getDifficulty(4)"><img src="./easy.JPG" alt="easy" onmouseover="playaudio('ezy')" onmouseout="StopSound('ezy')"></a>
+      <a href="game.html" onclick="getDifficulty(5)"><img src="./medium.jpg" alt="medium" onmouseover="playaudio('medium')" onmouseout="StopSound('medium')"></a>
+      <a href="game.html" onclick="getDifficulty(6)"><img src="./Hard.jpg" alt="hard" onmouseover="playaudio('hard');" onmouseout="StopSound('hard')"></a>
+    </div>
+    <div><img src="./speaker.JPG" alt="speaker" style="height: 100px; width: 100px;" onclick=""history.go(0)" VALUE="Refresh""></div>
+  </form>
+  <!-- Sound on hover on easy -->
+  <audio id="ezy">
+      <source src="./easy.mp3" type="audio/mp3">
+  </audio>
+  <!-- Sound on hover on medium -->
+  <audio id="medium">
+      <source src="./medium.mp3" type="audio/mp3">
+  </audio>
+  <!-- Sound on hover on hard -->
+  <audio id="hard">
+      <source src="./hard.mp3" type="audio/mp3">
+  </audio>
+  
   </body>
 </html>

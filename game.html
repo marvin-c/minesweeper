@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="minesweeper.css">
+    <script src="lib/tests.js"></script>
+    <script src="lib/lib.js"></script>
+    <script src="minesweeper.js"></script>
+    <script>
+        var difficulty = sessionStorage.getItem("passDifficulty");
+        document.getElementById("getDifficulty").innerHTML = sessionStorage.getItem(difficulty);
+    </script>
+    <script>
+      function playButton(audio) {
+        var buttonSound = document.getElementById(audio);
+       
+        buttonSound.play();
+      }  
+    </script>
+  </head>
+
+  <body>
+    <div id="message"></div>
+    <div id="notes"></div>
+    <div class="board" onclick="playButton('buttonClicked')" onmouseover="playButton('buttonHover')" oncontextmenu="playButton('rightClick')"></div>
+    <div id="showRestart">
+      <div style="text-align: center; margin-top: 20px; margin-bottom: 20px; font-size: 22px;"> Another Game?</div>
+      <div>
+        <button onclick="history.go(0)" value="Refresh" onclick="playButton('buttonClicked')" onmouseover="playButton('buttonHover')">Yes</button>
+        <button onclick="window.location.href='index.html'" onclick="playButton('buttonClicked')" onmouseover="playButton('buttonHover')">Change Difficulty</button>
+      </div>
+    </div>
+    <!-- Sound when mine revealed -->
+    <audio id="boom">
+      <source src="./explosion.wav" type="audio/wav">
+    </audio>
+    <!-- Sound when you won the game -->
+    <audio id="win">
+      <source src="./kids_cheering.mp3" type="audio/mp3">
+    </audio>
+    <!-- Sound when button clicked -->
+    <audio id="buttonClicked">
+      <source src="./button-28.wav" type="audio/wav">
+    </audio>
+    <!-- Sound when button hovered by mouse -->
+    <audio id="buttonHover">
+        <source src="./button-26.wav" type="audio/wav">
+    </audio>
+    <!-- Sound when button marked -->
+    <audio id="rightClick">
+        <source src="./trap.mp3" type="audio/mp3">
+    </audio>
+  </body>
+</html>
